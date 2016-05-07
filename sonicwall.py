@@ -20,13 +20,18 @@ def main() :
 
 	print "\n\n[*] Sending Credentials .. "
 	user.send_keys("cse14002")
-	passwd.send_keys("plplplplpl")
+	passwd.send_keys("goodstash")
 	passwd.send_keys(Keys.RETURN)
-
-	driver.get("http://www.msftncsi.com/ncsi.txt")
 
 	print "\n\n[*] Login Done!"
 	driver.quit()
+def internet_on():
+    try:
+        response=urllib2.urlopen('http://74.125.228.100',timeout=1)
+        return True
+    except urllib2.URLError as err: pass
+    return False
 
-
-main()
+while True:
+	if internet_on():	
+		main()
