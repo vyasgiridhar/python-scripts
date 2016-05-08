@@ -1,4 +1,3 @@
-#!/usr/bin/env python2
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import sys
@@ -22,16 +21,18 @@ def main() :
 	user.send_keys("cse14002")
 	passwd.send_keys("goodstash")
 	passwd.send_keys(Keys.RETURN)
-
+	driver.wait(10)
 	print "\n\n[*] Login Done!"
 	driver.quit()
 def internet_on():
     try:
         response=urllib2.urlopen('http://74.125.228.100',timeout=1)
-        return True
+        return False
     except urllib2.URLError as err: pass
-    return False
-
+    return True
+'''
 while True:
 	if internet_on():	
 		main()
+'''
+main()
